@@ -1,0 +1,79 @@
+#include <FastLED.h>
+#include <GyverEncoder.h>
+#include <Stepper.h>
+
+#define leds 50 // кол-во светодиодов
+#define pin_led 6 // пин ленты
+CRGB led[leds];
+
+#define pin_right 5 // пин энкодера
+#define pin_left 4 // пин энкодера
+#define but 11 // кнопка энкодера
+Encoder enc(pin_right, pin_left, but); 
+
+const int step = 200; // кол-во шагов
+Stepper myStepper(step, 8, 9, 10, 11);
+
+byte color = 0; // переменная для цвета
+int speed = 60; // переменная для скорости
+
+void setup() {
+
+  myStepper.setSpeed(speed); // устанавливаем скорость 
+
+  FastLED.addLeds<WS2812, pin_led, GRB>(led, leds);
+  FastLED.setBrightness(255); // яркость 255/255
+
+  enc.setType(TYPE2); // тип энкодера TYPE1/TYPE2
+
+  Serial.begin(9600); // порт
+
+}
+
+void steps() { // функция шаговика
+  myStepper.step(step); // поворачиваем по часовой
+  delay(500); // задержка 500мс
+
+  for(int i=0; i<=leds; i++)
+    {
+      led[i].setHue(color); // цвет
+      delay(5);
+      color++; // цвет по нарастающей
+    }
+    FastLED.show();
+}
+
+void loop() {
+
+  enc.tick(); // проверка энкодера
+
+  if(enc.isTurn()) // если было движение
+  {
+    Serial.println("Wake Up!"); 
+
+    for(int i=0; i<=leds; i++)
+    {
+     led[i] = CRGB::White; // белый цвет
+     delay(5);
+    }
+    FastLED.show();
+    delay(2000);
+  }
+  
+  if(enc.isClick()) // если была нажата кнопка
+  {
+    steps(); // вызываем функцию с шаговиком
+  }
+
+  else if (enc.isRight()) // если был поворот на право
+  {
+    speed += 2; // увеличиваем скорость
+    myStepper.setSpeed(speed); // ставим скорость
+  }
+
+  else if (enc.isLeft()) // если был поворот на лево
+  {
+    speed -= 2; // уменьшаем скорость
+    myStepper.setSpeed(speed); // ставим скорость
+  }
+}
