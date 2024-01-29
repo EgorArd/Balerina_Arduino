@@ -30,7 +30,7 @@ void setup()
   enc.setFastTimeout(10);
   
   FastLED.addLeds<WS2812, led_pin, BGR>(leds, led_num);
-  FastLED.setBrightness(255);
+  FastLED.setBrightness(bright);
 
   for(int i=0; i<=3; i++)
   {
@@ -55,15 +55,20 @@ void setup()
 
 void encoders()
 {
-  if(enc.isRight()) color+=10;
-  else if(enc.isLeft()) color-=10;
+  if(enc.isRight()) color += 10;
+  else if(enc.isLeft()) color -= 10;
 
-  if(enc.isFastR()) color+=30;
-  else if(enc.isFastL()) color-=30;
+  if(enc.isFastR()) color += 30;
+  else if(enc.isFastL()) color -= 30;
 
-  if(enc.isRightH()) bright+=25;
-  else if(enc.isLeftH()) bright-=25;
+  if(enc.isRightH()){
+    bright += 25;
+    FastLED.setBrightness(bright);}
+  else if(enc.isLeftH()){
+    bright -= 25;
+    FastLED.setBrightness(bright);}
 }
+
 
 
 void loop()
