@@ -6,12 +6,11 @@
 #define led_num 10
 
 #define enc_but 7
-#define enc_right 9
-#define enc_left 10
+#define enc_right 5
+#define enc_left 6
 
 byte color = 0;
 byte bright = 255;
-byte counter;
 int speed = 60;
 const int stepsPerRevolution = 200;
 
@@ -26,7 +25,7 @@ void setup()
 
   myStepper.setSpeed(speed); 
   
-  enc.setType(TYPE2);
+  enc.setType(TYPE1);
   enc.setFastTimeout(10);
   
   FastLED.addLeds<WS2812, led_pin, BGR>(leds, led_num);
@@ -52,9 +51,16 @@ void setup()
   }
 }
 
-
-void encoders()
+void loop()
 {
+  enc.tick();
+
+  if(enc.isClick())
+  {
+    myStepper.step(stepsPerRevolution);
+    delay(500);
+  }
+
   if(enc.isRight()) color += 10;
   else if(enc.isLeft()) color -= 10;
 
@@ -67,33 +73,13 @@ void encoders()
   else if(enc.isLeftH()){
     bright -= 25;
     FastLED.setBrightness(bright);}
-}
 
-
-
-void loop()
-{
-  enc.tick();
-
-  if(enc.isClick())
+  for(int i=0; i<=led_num; i++)
   {
-    myStepper.step(stepsPerRevolution);
-    delay(500);
-
-    encoders();
+    leds[i].setHue(color);
+    delay(5);
   }
+  FastLED.show();
 
-  else if(enc.isDouble())
-  {
-    for (int i = 0; i < led_num; i++) 
-    {
-      leds[i].setHue(counter + i * 255 / led_num);
-    }
-    counter++;        
-    FastLED.show();
-    delay(30); 
-
-    encoders();
-  }
-  encoders();
+  Serial.println(color);
 }
