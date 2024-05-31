@@ -6,7 +6,6 @@
 CRGB leds[led]; // массив светодиодов
 
 GStepper2< STEPPER4WIRE> stepper(2038, 8, 10, 9, 11); // пины шаговика (8, 10, 9, 11)
-
 int pin_pot = A1 // пин потенциометра
 
 void setup()
