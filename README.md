@@ -10,7 +10,8 @@
 • Переключатель  
 • Разъем - 5х5 на 2х5  
    
-![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/a9a07f0f-2a05-4fe0-9496-fc8b6efadeec)
+![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/c42f1c75-d70f-4c59-8836-2f7041f1c63b)
+
 
 # 👇 Схема по сборке (2 вариант - полная комплектация) 👇 
 В данной схеме используется:  
@@ -23,6 +24,7 @@
 • Разъем - 5х5 на 2х5  
 • Mini MP3 Проигрыватель  
    
-![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/a97c028b-2f76-4b74-9f69-248cf251241c)
+![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/b1194099-0d23-48ec-99ef-6816bc82acc0)
+
 
 
