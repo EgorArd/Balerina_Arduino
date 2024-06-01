@@ -12,7 +12,7 @@ void setup()
 { 
   FastLED.addLeds<WS2812, led_pin, BGR>(leds, led); // инициализация
   FastLED.setBrightness(255); // яркость ленты
-
+  
   stepper.setSpeedDeg(90); // скорость шаговика в градусах/в сек.
 }
 
