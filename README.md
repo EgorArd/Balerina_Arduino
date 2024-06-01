@@ -27,7 +27,8 @@
 • Mini MP3 Проигрыватель  
 
    
-![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/fe076818-8ae6-4fc3-90bb-cd3e70759c32)
+![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/d27811c6-48da-4c87-86d6-a4c85eae81a5)
+
 
 
 
