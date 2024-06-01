@@ -24,7 +24,8 @@
 • Разъем - 5х5 на 2х5  
 • Mini MP3 Проигрыватель  
    
-![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/b1194099-0d23-48ec-99ef-6816bc82acc0)
+![image](https://github.com/EgorArd/Balerina_Arduino/assets/139771381/fe076818-8ae6-4fc3-90bb-cd3e70759c32)
+
 
 
 
